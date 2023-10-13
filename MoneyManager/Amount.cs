@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MoneyManager
 {
@@ -14,7 +15,7 @@ namespace MoneyManager
         private int height = 30;
         private TextBox amountTextbox;
         private StackPanel amountStackpanel;
-        
+
 
         public Amount(StackPanel stackPanel, TextBox textBox)
         {
@@ -23,18 +24,24 @@ namespace MoneyManager
 
         }
 
-        public void addAmount()
+        public void addAmount(bool isIncome)
         {
             if (amountTextbox != null && !string.IsNullOrWhiteSpace(amountTextbox.Text))
             {
+                string amount = amountTextbox.Text;
+                Label newLabel = new Label();
+                newLabel.FontSize = fontsize;
+                newLabel.Height = height;
+                newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+                newLabel.Content = amount;
+                amountStackpanel.Children.Add(newLabel);
+                if (isIncome == true)
                 {
-                    string amount = amountTextbox.Text;
-                    Label newLabel = new Label();
-                    newLabel.FontSize = fontsize;
-                    newLabel.Height = height;
-                    newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
-                    newLabel.Content = amount;
-                    amountStackpanel.Children.Add(newLabel);
+                    newLabel.Background = Brushes.Green;
+                }
+                else
+                {
+                    newLabel.Background = Brushes.Red;
                 }
             }
         }

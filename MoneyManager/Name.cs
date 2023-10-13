@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MoneyManager
 {
@@ -21,7 +22,7 @@ namespace MoneyManager
             nameTextbox = textBox;
         }
 
-        public void add_name_label()
+        public void addName(bool isIncome)
         {
             if (nameTextbox != null && !string.IsNullOrWhiteSpace(nameTextbox.Text))
             {
@@ -33,6 +34,14 @@ namespace MoneyManager
                     newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
                     newLabel.Content = name;
                     nameStackpanel.Children.Add(newLabel);
+                    if (isIncome == true)
+                    {
+                        newLabel.Background = Brushes.Green;
+                    }
+                    else
+                    {
+                        newLabel.Background = Brushes.Red;
+                    }
                 }
             }
         }

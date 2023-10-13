@@ -18,7 +18,7 @@
         <StackPanel x:Name="Controls_StackPanel" Grid.Column="0">
             <Rectangle Height="30"/>
             <Label Content="Category" FontSize="15" HorizontalContentAlignment="Center"/>
-            <ComboBox x:Name="Category_ComboBox" Width="150">
+            <ComboBox x:Name="categoryCombobox" Width="150">
                 <ComboBoxItem Content="Food/Drinks"/>
                 <ComboBoxItem Content="Tax"/>
                 <ComboBoxItem Content="Wage"/>
@@ -76,17 +76,17 @@
                 <Rectangle Fill="LightGray" Width="300"/>
             </StackPanel>
             <ScrollViewer Grid.Row="1" HorizontalAlignment="Left" Background="White" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto">
-                <StackPanel x:Name="Table_StackPanel" Orientation="Horizontal">
-                    <StackPanel x:Name="Category_StackPanel" Width="120"/>
-                    <StackPanel x:Name="Name_StackPanel" Width="95"/>
-                    <StackPanel x:Name="Amount_StackPanel" Width="95"/>
-                    <StackPanel x:Name="Delete_Buttons_StackPanel" Width="30"/>
+                <StackPanel x:Name="tableStackpanel" Orientation="Horizontal">
+                    <StackPanel x:Name="categoryStackpanel" Width="120"/>
+                    <StackPanel x:Name="nameStackpanel" Width="95"/>
+                    <StackPanel x:Name="amountStackpanel" Width="95"/>
+                    <StackPanel x:Name="deleteButtonsStackpanel" Width="30"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
         <StackPanel Grid.Column="3">
                 <Label Content="Balance" FontSize="22" HorizontalContentAlignment="Center" Height="45" Background="LightGray"/>
-                <Label x:Name="Balance_Label" Content="0" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
+                <Label x:Name="balanceLabel" Content="0" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
         </StackPanel>
         
     </Grid>

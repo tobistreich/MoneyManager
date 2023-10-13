@@ -52,9 +52,9 @@ namespace MoneyManager
             }
             else
             {
-                categoryClass.add_cat_label();
-                nameClass.add_name_label();
-                amountClass.add_amount();
+                categoryClass.addCategory(isIncome);
+                nameClass.addName(isIncome);
+                amountClass.addAmount(isIncome);
 
                 setNull();
                 CheckBalance();
@@ -81,5 +81,11 @@ namespace MoneyManager
                 balanceLabel.Background = Brushes.Gray;
             }
         }
+
+        public void updateColor()
+        {
+            
+        }
+
     }
 }
