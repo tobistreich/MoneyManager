@@ -20,20 +20,35 @@ namespace MoneyManager
         {
             InitializeComponent();
 
-
+            CheckBalance();
             setNull();
-  
         }
-        public void add_inc_exp(object sender, RoutedEventArgs e)
+        
+
+
+        private void Income_Clicked(object sender, RoutedEventArgs e)
+        {
+            isIncome = true;
+            balance += Convert.ToDouble(Amount_TextBox.Text);
+            Balance_Label.Content = balance + "€";
+            new_inc_exp();
+        }
+        private void Expense_Clicked(object sender, RoutedEventArgs e)
+        {
+            isIncome = false;
+            balance -= Convert.ToDouble(Amount_TextBox.Text);
+            Balance_Label.Content = balance + "€";
+            new_inc_exp();
+        }
+        public void new_inc_exp()
         {
             Category categoryClass = new Category(Category_StackPanel, Category_ComboBox);
             Name nameClass = new Name(Name_StackPanel, Name_TextBox);
             Amount amountClass = new Amount(Amount_StackPanel, Amount_TextBox);
-            Balance balanceClass = new Balance(mainWindow, Balance_Label, Amount_TextBox);
 
             if (Category_ComboBox == null || Name_TextBox == null || Amount_TextBox == null)
             {
-                MessageBox.Show("Bitte überprüfe deine Eingaben nocheinmal!");        
+                MessageBox.Show("Bitte überprüfe deine Eingaben nocheinmal!");
             }
             else
             {
@@ -42,36 +57,29 @@ namespace MoneyManager
                 amountClass.add_amount();
 
                 setNull();
+                CheckBalance();
             }
-
-
         }
-
-
-        private void Income_Clicked(object sender, RoutedEventArgs e)
-        {
-            isIncome = true;
-            balance += Convert.ToDouble(Amount_TextBox.Text);
-            Balance_Label.Content = "+" + balance;
-
-        }
-        private void Expense_Clicked(object sender, RoutedEventArgs e)
-        {
-            isIncome = false;
-            balance -= Convert.ToDouble(Amount_TextBox.Text);
-            Balance_Label.Content = balance;
-        }
-
         public void setNull()
         {
             Category_ComboBox.Text = null;
             Name_TextBox.Text = "";
             Amount_TextBox.Text = "";
         }
-
-        public void UpdateBalanceLabel()
-        {  
-            Balance_Label.Content = balance.ToString();
+        public void CheckBalance()
+        {
+            if (balance > 0)
+            {
+                Balance_Label.Background= Brushes.Green;
+            }
+            else if (balance < 0)
+            {
+                Balance_Label.Background= Brushes.Red;
+            }
+            else
+            {
+                Balance_Label.Background = Brushes.Gray;
+            }
         }
     }
 }
