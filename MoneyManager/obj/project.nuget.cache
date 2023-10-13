@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "09a1N8AYhRMLiCPit0s8jnLsl6OLTMPsQdogcnpR0MiUjjCMdddVg717WT4OiwazBn76bRWbdWFq5k5L01earw==",
+  "dgSpecHash": "oeVWuHLkK0hXfOlsIkaTt90hv/388f/upsTfN4fQTgaRGlFZawL/KgMbVv690anOBIATqlLBkl9Sa4YNxSiAWw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager - Kopie (2)\\MoneyManager\\MoneyManager.csproj",
+  "projectFilePath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tobias.streich\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512"
   ],

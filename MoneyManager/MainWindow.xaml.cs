@@ -26,7 +26,7 @@ namespace MoneyManager
         {
             Category_Class categoryClass = new Category_Class(Category_StackPanel, Category_ComboBox);
             Name_Class nameClass = new Name_Class(Name_StackPanel, Name_TextBox);
-            Amount_Class amountClass = new Amount_Class(Amount_StackPanel, Amount_TextBox);
+            Amount amountClass = new Amount(Amount_StackPanel, Amount_TextBox);
             Balance_Class balanceClass = new Balance_Class(Balance_Label, Amount_TextBox);
 
             if (Category_ComboBox == null || Name_TextBox == null || Amount_TextBox == null)

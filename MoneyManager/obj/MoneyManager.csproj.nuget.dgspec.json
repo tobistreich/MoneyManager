@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager - Kopie (2)\\MoneyManager\\MoneyManager.csproj": {}
+    "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager - Kopie (2)\\MoneyManager\\MoneyManager.csproj": {
+    "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager - Kopie (2)\\MoneyManager\\MoneyManager.csproj",
+        "projectUniqueName": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj",
         "projectName": "MoneyManager",
-        "projectPath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager - Kopie (2)\\MoneyManager\\MoneyManager.csproj",
+        "projectPath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj",
         "packagesPath": "C:\\Users\\tobias.streich\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager - Kopie (2)\\MoneyManager\\obj\\",
+        "outputPath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tobias.streich\\AppData\\Roaming\\NuGet\\NuGet.Config",
