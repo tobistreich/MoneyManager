@@ -8,12 +8,12 @@ using System.Windows.Controls;
 
 namespace MoneyManager
 {
-    internal class Balance_Class
+    internal class Balance
     {
         private TextBox Amount_TextBox;
         private Label Balanace_Label;
 
-        public Balance_Class(Label label, TextBox textBox)
+        public Balance(Label label, TextBox textBox)
         {
             Balanace_Label = label;
             Amount_TextBox = textBox;
