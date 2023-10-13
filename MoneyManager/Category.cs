@@ -8,14 +8,14 @@ using System.Windows.Controls;
 
 namespace MoneyManager
 {
-    internal class Category_Class
+    internal class Category
     {
         private int fontsize = 15;
         private int height = 30;
         private ComboBox Category_ComboBox; 
         private StackPanel Category_StackPanel; 
 
-        public Category_Class(StackPanel stackPanel, ComboBox comboBox)
+        public Category(StackPanel stackPanel, ComboBox comboBox)
         {
             Category_StackPanel = stackPanel; 
             Category_ComboBox = comboBox; 

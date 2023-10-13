@@ -14,11 +14,13 @@ namespace MoneyManager
         private int height = 30;
         private TextBox Amount_TextBox;
         private StackPanel Amount_StackPanel;
+        
 
         public Amount(StackPanel stackPanel, TextBox textBox)
         {
             Amount_StackPanel = stackPanel;
             Amount_TextBox = textBox;
+
         }
 
         public void add_amount()
@@ -34,13 +36,6 @@ namespace MoneyManager
                     new_label.Content = amount;
                     Amount_StackPanel.Children.Add(new_label);
                 }
-            }
-        }
-        public void get_amount()
-        {
-            if (Amount_TextBox != null && !string.IsNullOrWhiteSpace(Amount_TextBox.Text))
-            {
-                double amount = Convert.ToDouble(Amount_TextBox.Text);
             }
         }
     }

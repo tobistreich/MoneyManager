@@ -14,30 +14,9 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="0.75*"/>
         </Grid.ColumnDefinitions>
-        
+
         <StackPanel x:Name="Controls_StackPanel" Grid.Column="0">
-            <Grid x:Name="Buttons_StackPanel" Height="45">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <Button x:Name="Income" Content="Income" Grid.Column="0" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Income_Clicked">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-                <Button x:Name="Expense" Content="Expense" Grid.Column="1" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Expense_Clicked">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-            </Grid>
-
+            <Rectangle Height="30"/>
             <Label Content="Category" FontSize="15" HorizontalContentAlignment="Center"/>
             <ComboBox x:Name="Category_ComboBox" Width="150">
                 <ComboBoxItem Content="Food/Drinks"/>
@@ -59,15 +38,29 @@
             <Label Content="Amount" FontSize="15" HorizontalContentAlignment="Center"/>
             <TextBox x:Name="Amount_TextBox" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
 
-            <Rectangle Height="20"/>
+            <Rectangle Height="30"/>
 
-            <Button x:Name="Add_Button" Height="50" Margin="5" Content="Add" FontSize="25" Click="add_inc_exp" IsDefault="True" Visibility="Collapsed">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            <Grid x:Name="Buttons_Grid" Height="45">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="income_button" Content="Einkommen" Grid.Column="0" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Income_Clicked">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="expense_button" Content="Ausgabe" Grid.Column="1" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Expense_Clicked">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
         </StackPanel>
         <Grid x:Name="Table_Grid" Grid.Column="1">
             <Grid.RowDefinitions>

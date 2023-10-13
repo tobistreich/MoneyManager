@@ -8,14 +8,14 @@ using System.Windows.Controls;
 
 namespace MoneyManager
 {
-    internal class Name_Class
+    internal class Name
     {
         private int fontsize = 15;
         private int height = 30;
         private TextBox Name_TextBox;
         private StackPanel Name_StackPanel;
 
-        public Name_Class(StackPanel stackPanel, TextBox textBox)
+        public Name(StackPanel stackPanel, TextBox textBox)
         {
             Name_StackPanel = stackPanel;
             Name_TextBox = textBox;

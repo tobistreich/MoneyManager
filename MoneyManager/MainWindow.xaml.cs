@@ -14,20 +14,22 @@ namespace MoneyManager
 {
     public partial class MainWindow : Window
     {
-        
         public bool isIncome;
-
+        public double balance = 0.0;
         public MainWindow()
         {
             InitializeComponent();
+
+
             setNull();
+  
         }
         public void add_inc_exp(object sender, RoutedEventArgs e)
         {
-            Category_Class categoryClass = new Category_Class(Category_StackPanel, Category_ComboBox);
-            Name_Class nameClass = new Name_Class(Name_StackPanel, Name_TextBox);
+            Category categoryClass = new Category(Category_StackPanel, Category_ComboBox);
+            Name nameClass = new Name(Name_StackPanel, Name_TextBox);
             Amount amountClass = new Amount(Amount_StackPanel, Amount_TextBox);
-            Balance_Class balanceClass = new Balance_Class(Balance_Label, Amount_TextBox);
+            Balance balanceClass = new Balance(mainWindow, Balance_Label, Amount_TextBox);
 
             if (Category_ComboBox == null || Name_TextBox == null || Amount_TextBox == null)
             {
@@ -42,19 +44,22 @@ namespace MoneyManager
                 setNull();
             }
 
-            Add_Button.Visibility = Visibility.Collapsed; 
+
         }
 
 
         private void Income_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = true;
-            Add_Button.Visibility = Visibility.Visible;
+            balance += Convert.ToDouble(Amount_TextBox.Text);
+            Balance_Label.Content = "+" + balance;
+
         }
         private void Expense_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = false;
-            Add_Button.Visibility = Visibility.Visible;
+            balance -= Convert.ToDouble(Amount_TextBox.Text);
+            Balance_Label.Content = balance;
         }
 
         public void setNull()
@@ -62,6 +67,11 @@ namespace MoneyManager
             Category_ComboBox.Text = null;
             Name_TextBox.Text = "";
             Amount_TextBox.Text = "";
+        }
+
+        public void UpdateBalanceLabel()
+        {  
+            Balance_Label.Content = balance.ToString();
         }
     }
 }
