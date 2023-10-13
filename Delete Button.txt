@@ -1,0 +1,16 @@
+#region new deletebutton
+//New Delete Button
+Button deleteButton = new Button();
+deleteButton.Content = "🗑️";
+deleteButton.FontSize = fontsize;
+deleteButton.Height = height;
+deleteButton.Click += (s, ev) =>
+{
+    // delete Labels and buttons from Stackpanels
+    Category_StackPanel.Children.Remove(new_category_label);
+    Name_StackPanel.Children.Remove(new_name_label);
+    Amount_StackPanel.Children.Remove(new_amount_label);
+    Delete_Buttons_StackPanel.Children.Remove(deleteButton);
+};
+Delete_Buttons_StackPanel.Children.Add(deleteButton);
+#endregion

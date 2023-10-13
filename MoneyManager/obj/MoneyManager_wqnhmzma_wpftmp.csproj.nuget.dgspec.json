@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj",
+        "projectName": "MoneyManager",
+        "projectPath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj",
+        "packagesPath": "C:\\Users\\tobias.streich\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tobias.streich\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+        },
+        "frameworks": {
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
