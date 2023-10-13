@@ -93,7 +93,7 @@
         </Grid>
         <StackPanel Grid.Column="3">
                 <Label Content="Balance" FontSize="22" HorizontalContentAlignment="Center" Height="45" Background="LightGray"/>
-                <Label x:Name="Balance_Label" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
+                <Label x:Name="Balance_Label" Content="0" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
         </StackPanel>
         
     </Grid>
