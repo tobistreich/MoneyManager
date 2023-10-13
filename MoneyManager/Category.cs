@@ -12,26 +12,26 @@ namespace MoneyManager
     {
         private int fontsize = 15;
         private int height = 30;
-        private ComboBox Category_ComboBox; 
-        private StackPanel Category_StackPanel; 
+        private ComboBox categoryCombobox; 
+        private StackPanel categoryStackpanel; 
 
         public Category(StackPanel stackPanel, ComboBox comboBox)
         {
-            Category_StackPanel = stackPanel; 
-            Category_ComboBox = comboBox; 
+            categoryStackpanel = stackPanel; 
+            categoryCombobox = comboBox; 
         }
 
-        public void add_cat_label()
+        public void addCategory()
         {
-            if (Category_ComboBox != null && Category_ComboBox.SelectedItem != null)
+            if (categoryCombobox != null && categoryCombobox.SelectedItem != null)
             {
-                string category = Category_ComboBox.Text;
-                Label new_category_label = new Label();
-                new_category_label.FontSize = fontsize;
-                new_category_label.Height = height;
-                new_category_label.HorizontalContentAlignment = HorizontalAlignment.Center;
-                new_category_label.Content = category;
-                Category_StackPanel.Children.Add(new_category_label);
+                string category = categoryCombobox.Text;
+                Label newLabel = new Label();
+                newLabel.FontSize = fontsize;
+                newLabel.Height = height;
+                newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+                newLabel.Content = category;
+                categoryStackpanel.Children.Add(newLabel);
             }
         }
     }

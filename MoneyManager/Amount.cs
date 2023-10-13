@@ -12,29 +12,29 @@ namespace MoneyManager
     {
         private int fontsize = 15;
         private int height = 30;
-        private TextBox Amount_TextBox;
-        private StackPanel Amount_StackPanel;
+        private TextBox amountTextbox;
+        private StackPanel amountStackpanel;
         
 
         public Amount(StackPanel stackPanel, TextBox textBox)
         {
-            Amount_StackPanel = stackPanel;
-            Amount_TextBox = textBox;
+            amountStackpanel = stackPanel;
+            amountTextbox = textBox;
 
         }
 
-        public void add_amount()
+        public void addAmount()
         {
-            if (Amount_TextBox != null && !string.IsNullOrWhiteSpace(Amount_TextBox.Text))
+            if (amountTextbox != null && !string.IsNullOrWhiteSpace(amountTextbox.Text))
             {
                 {
-                    string amount = Amount_TextBox.Text;
-                    Label new_label = new Label();
-                    new_label.FontSize = fontsize;
-                    new_label.Height = height;
-                    new_label.HorizontalContentAlignment = HorizontalAlignment.Center;
-                    new_label.Content = amount;
-                    Amount_StackPanel.Children.Add(new_label);
+                    string amount = amountTextbox.Text;
+                    Label newLabel = new Label();
+                    newLabel.FontSize = fontsize;
+                    newLabel.Height = height;
+                    newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+                    newLabel.Content = amount;
+                    amountStackpanel.Children.Add(newLabel);
                 }
             }
         }

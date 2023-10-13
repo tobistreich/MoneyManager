@@ -31,12 +31,12 @@
             <Rectangle Height="20"/>
             
             <Label Content="Name" FontSize="15" HorizontalContentAlignment="Center"/>
-            <TextBox x:Name="Name_TextBox" x:FieldModifier="public" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
+            <TextBox x:Name="nameTextbox" x:FieldModifier="public" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
             
             <Rectangle Height="20"/>
 
             <Label Content="Amount" FontSize="15" HorizontalContentAlignment="Center"/>
-            <TextBox x:Name="Amount_TextBox" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
+            <TextBox x:Name="amountTextbox" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
 
             <Rectangle Height="30"/>
 

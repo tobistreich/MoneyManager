@@ -29,24 +29,24 @@ namespace MoneyManager
         private void Income_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = true;
-            balance += Convert.ToDouble(Amount_TextBox.Text);
-            Balance_Label.Content = balance + "€";
+            balance += Convert.ToDouble(amountTextbox.Text);
+            balanceLabel.Content = balance + "€";
             new_inc_exp();
         }
         private void Expense_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = false;
-            balance -= Convert.ToDouble(Amount_TextBox.Text);
-            Balance_Label.Content = balance + "€";
+            balance -= Convert.ToDouble(amountTextbox.Text);
+            balanceLabel.Content = balance + "€";
             new_inc_exp();
         }
         public void new_inc_exp()
         {
-            Category categoryClass = new Category(Category_StackPanel, Category_ComboBox);
-            Name nameClass = new Name(Name_StackPanel, Name_TextBox);
-            Amount amountClass = new Amount(Amount_StackPanel, Amount_TextBox);
+            Category categoryClass = new Category(categoryStackpanel, categoryCombobox);
+            Name nameClass = new Name(nameStackpanel, nameTextbox);
+            Amount amountClass = new Amount(amountStackpanel, amountTextbox);
 
-            if (Category_ComboBox == null || Name_TextBox == null || Amount_TextBox == null)
+            if (categoryCombobox == null || nameTextbox == null || amountTextbox == null)
             {
                 MessageBox.Show("Bitte überprüfe deine Eingaben nocheinmal!");
             }
@@ -62,23 +62,23 @@ namespace MoneyManager
         }
         public void setNull()
         {
-            Category_ComboBox.Text = null;
-            Name_TextBox.Text = "";
-            Amount_TextBox.Text = "";
+            categoryCombobox.Text = null;
+            nameTextbox.Text = "";
+            amountTextbox.Text = "";
         }
         public void CheckBalance()
         {
             if (balance > 0)
             {
-                Balance_Label.Background= Brushes.Green;
+                balanceLabel.Background= Brushes.Green;
             }
             else if (balance < 0)
             {
-                Balance_Label.Background= Brushes.Red;
+                balanceLabel.Background= Brushes.Red;
             }
             else
             {
-                Balance_Label.Background = Brushes.Gray;
+                balanceLabel.Background = Brushes.Gray;
             }
         }
     }
