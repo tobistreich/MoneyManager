@@ -81,11 +81,5 @@ namespace MoneyManager
                 balanceLabel.Background = Brushes.Gray;
             }
         }
-
-        public void updateColor()
-        {
-            
-        }
-
     }
 }
