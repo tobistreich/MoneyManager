@@ -17,8 +17,9 @@ namespace MoneyManager
     {
         public string Category { get; set; }
         public string Name { get; set; }
-        public double Amount { get; set; }
+        public string Amount { get; set; }
         public bool IsIncome { get; set; }
+
     }
     public partial class MainWindow : Window
     {
@@ -42,14 +43,14 @@ namespace MoneyManager
             isIncome = true;
             balance += Convert.ToDouble(amountTextbox.Text);
             balanceLabel.Content = balance + "€";
-            new_inc_exp();
+            New_inc_exp();
         }
         private void Expense_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = false;
             balance -= Convert.ToDouble(amountTextbox.Text);
             balanceLabel.Content = balance + "€";
-            new_inc_exp();
+            New_inc_exp();
         }
         public void New_inc_exp()
         {
@@ -99,13 +100,13 @@ namespace MoneyManager
             {
                 Category = categoryCombobox.Text,
                 Name = nameTextbox.Text,
-                Amount = Convert.ToDouble(amountTextbox.Text),
+                Amount = amountTextbox.Text,
                 IsIncome = isIncome
             };
 
-            var records = new List<ExpenseRecord> { record };
+            records.Add(record); 
 
-            using (var writer = new StreamWriter("expenses.csv", true))
+            using (var writer = new StreamWriter("expenses.csv", false)) // Truncate the file
             using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
                 csv.WriteRecords(records);
@@ -118,14 +119,43 @@ namespace MoneyManager
             {
                 records = csv.GetRecords<ExpenseRecord>().ToList();
 
-                if (records.Count > 0)
+                categoryStackpanel.Children.Clear();
+                nameStackpanel.Children.Clear();
+                amountStackpanel.Children.Clear();
+
+                foreach (var record in records)
                 {
-                    var lastRecord = records.Last();
-                    labelCategory.Content = lastRecord.Category;
-                    labelName.Content = lastRecord.Name;
-                    labelAmount.Content = lastRecord.Amount.ToString("C");
+                    NewLabel(record.Category, categoryStackpanel, record.IsIncome);
+                    NewLabel(record.Name, nameStackpanel, record.IsIncome);
+                    NewLabel(record.Amount.ToString(), amountStackpanel, record.IsIncome);
                 }
             }
+        }
+        public void NewLabel(string content, StackPanel stackpanel, bool isIncome)
+        {
+            Label newLabel = new Label();
+            newLabel.Content = content;
+            newLabel.FontSize = 15;
+            newLabel.Height = 30;
+            newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            if (isIncome)
+            {
+                newLabel.Background = Brushes.Green;
+            }
+            else
+            {
+                newLabel.Background = Brushes.Red;
+            }
+            if (stackpanel == amountStackpanel && isIncome == true)
+            {
+                newLabel.Content = content + "€";
+            }
+            else if (stackpanel == amountStackpanel && isIncome == false)
+            {
+                newLabel.Content = "-" + content + "€";
+            }
+
+            stackpanel.Children.Add(newLabel);
         }
     }
 }

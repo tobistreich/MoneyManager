@@ -1,0 +1,6 @@
+Category,Name,Amount,IsIncome
+Tax,Steuer,82,False
+Wage,Lohn,900,True
+Wage,asd,2342,True
+Gift,asdasdsg,345,True
+Gift,dsfg2342,432234,False
