@@ -179,5 +179,12 @@ namespace MoneyManager
 
             stackpanel.Children.Add(newLabel);
         }
+
+        private void RestartWindow(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

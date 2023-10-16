@@ -16,13 +16,22 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel x:Name="Controls_StackPanel" Grid.Column="0">
-            <Rectangle Height="45" Fill="LightGray"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="4.5*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="restartButton" Content="↻" VerticalContentAlignment="Top" FontSize="30" BorderBrush="LightGray" Background="LightGray" Click="RestartWindow"></Button>
+                <Rectangle Grid.Column ="1" Height="45" Fill="LightGray"/>
+            </Grid>
+            
             
             <Label Content="Kategorie" FontSize="15" HorizontalContentAlignment="Center"/>
             <ComboBox x:Name="categoryCombobox" Width="150">
                 <ComboBoxItem Content="Lebensmittel"/>
                 <ComboBoxItem Content="Steuer/Abgaben"/>
                 <ComboBoxItem Content="Einkommen"/>
+                <ComboBoxItem Content="Shopping"/>
                 <ComboBoxItem Content="Geschenk"/>
                 <ComboBoxItem Content="Abo/Vertrag"/>
                 <ComboBoxItem Content="Miete/Wohnen"/>
