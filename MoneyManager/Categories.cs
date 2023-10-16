@@ -9,40 +9,36 @@ using System.Windows.Media;
 
 namespace MoneyManager
 {
-    internal class Amount
+    internal class Categories
     {
         private int fontsize = 15;
         private int height = 30;
-        private TextBox amountTextbox;
-        private StackPanel amountStackpanel;
+        private ComboBox categoryCombobox; 
+        private StackPanel categoryStackpanel;
 
-
-        public Amount(StackPanel stackPanel, TextBox textBox)
+        public Categories(StackPanel stackPanel, ComboBox comboBox)
         {
-            amountStackpanel = stackPanel;
-            amountTextbox = textBox;
-
+            categoryStackpanel = stackPanel; 
+            categoryCombobox = comboBox; 
         }
 
-        public void addAmount(bool isIncome)
+        public void addCategory(bool isIncome)
         {
-            if (amountTextbox != null && !string.IsNullOrWhiteSpace(amountTextbox.Text))
+            if (categoryCombobox != null && categoryCombobox.SelectedItem != null)
             {
-                string amount = amountTextbox.Text;
+                string category = categoryCombobox.Text;
                 Label newLabel = new Label();
                 newLabel.FontSize = fontsize;
                 newLabel.Height = height;
                 newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
-                
-                amountStackpanel.Children.Add(newLabel);
-                if (isIncome == true)
+                newLabel.Content = category;
+                categoryStackpanel.Children.Add(newLabel);
+                if (isIncome == true )
                 {
-                    newLabel.Content = amount + "€";
                     newLabel.Background = Brushes.Green;
                 }
                 else
                 {
-                    newLabel.Content = "-" + amount + "€";
                     newLabel.Background = Brushes.Red;
                 }
             }

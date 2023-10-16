@@ -19,7 +19,7 @@ namespace MoneyManager
         public string Name { get; set; }
         public string Amount { get; set; }
         public bool IsIncome { get; set; }
-
+        public string Date {  get; set; }
     }
     public partial class MainWindow : Window
     {
@@ -54,9 +54,10 @@ namespace MoneyManager
         }
         public void New_inc_exp()
         {
-            Category categoryClass = new Category(categoryStackpanel, categoryCombobox);
-            Name nameClass = new Name(nameStackpanel, nameTextbox);
-            Amount amountClass = new Amount(amountStackpanel, amountTextbox);
+            Categories categoryClass = new Categories(categoryStackpanel, categoryCombobox);
+            Names nameClass = new Names(nameStackpanel, nameTextbox);
+            Amounts amountClass = new Amounts(amountStackpanel, amountTextbox);
+            Dates datesClass = new Dates(dateStackpanel, datesPicker);
 
             if (categoryCombobox == null || nameTextbox == null || amountTextbox == null)
             {
@@ -67,6 +68,7 @@ namespace MoneyManager
                 categoryClass.addCategory(isIncome);
                 nameClass.addName(isIncome);
                 amountClass.addAmount(isIncome);
+                datesClass.addDate(isIncome);
 
                 WriteToCSV();
                 SetNull();
@@ -78,6 +80,7 @@ namespace MoneyManager
             categoryCombobox.Text = null;
             nameTextbox.Text = "";
             amountTextbox.Text = "";
+            datesPicker.Text = null;
         }
         public void CheckBalanceColor()
         {
@@ -101,7 +104,8 @@ namespace MoneyManager
                 Category = categoryCombobox.Text,
                 Name = nameTextbox.Text,
                 Amount = amountTextbox.Text,
-                IsIncome = isIncome
+                IsIncome = isIncome,
+                Date = datesPicker.Text,
             };
 
             records.Add(record); 
@@ -122,12 +126,14 @@ namespace MoneyManager
                 categoryStackpanel.Children.Clear();
                 nameStackpanel.Children.Clear();
                 amountStackpanel.Children.Clear();
+                dateStackpanel.Children.Clear();
 
                 foreach (var record in records)
                 {
                     NewLabel(record.Category, categoryStackpanel, record.IsIncome);
                     NewLabel(record.Name, nameStackpanel, record.IsIncome);
                     NewLabel(record.Amount.ToString(), amountStackpanel, record.IsIncome);
+                    NewLabel(record.Date, dateStackpanel, record.IsIncome);
 
                     if (record.IsIncome == true)
                     {

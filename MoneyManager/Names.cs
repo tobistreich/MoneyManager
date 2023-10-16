@@ -9,14 +9,14 @@ using System.Windows.Media;
 
 namespace MoneyManager
 {
-    internal class Name
+    internal class Names
     {
         private int fontsize = 15;
         private int height = 30;
         private TextBox nameTextbox;
         private StackPanel nameStackpanel;
 
-        public Name(StackPanel stackPanel, TextBox textBox)
+        public Names(StackPanel stackPanel, TextBox textBox)
         {
             nameStackpanel = stackPanel;
             nameTextbox = textBox;

@@ -29,17 +29,21 @@
                 <ComboBoxItem Content="Mobilität"/>
             </ComboBox>
 
-            <Rectangle Height="30"/>
+            <Rectangle Height="10"/>
             
             <Label Content="Name" FontSize="15" HorizontalContentAlignment="Center"/>
             <TextBox x:Name="nameTextbox" x:FieldModifier="public" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
             
-            <Rectangle Height="20"/>
+            <Rectangle Height="10"/>
 
-            <Label Content="Betrag" FontSize="15" HorizontalContentAlignment="Center"/>
+            <Label Content="Betrag" FontSize="15" Height ="32.5" HorizontalContentAlignment="Center"/>
             <TextBox x:Name="amountTextbox" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
 
             <Rectangle Height="30"/>
+            
+            <DatePicker x:Name="datesPicker" Width="150"></DatePicker>
+            
+            <Rectangle Height="25"/>
 
             <Grid x:Name="Buttons_Grid" Height="45">
                 <Grid.ColumnDefinitions>
@@ -73,7 +77,8 @@
                 <Label Content="Kategorie" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="120" Background="LightGray"/>
                 <Label Content="Name" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
                 <Label Content="Betrag" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
-                <Label HorizontalContentAlignment="Center" Height="45" Width="30" Background="LightGray"/>
+                <Label Content="Datum" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
+                
                 <Rectangle Fill="LightGray" Width="300"/>
             </StackPanel>
             <ScrollViewer Grid.Row="1" HorizontalAlignment="Left" Background="White" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto">
@@ -81,7 +86,7 @@
                     <StackPanel x:Name="categoryStackpanel" Width="120"/>
                     <StackPanel x:Name="nameStackpanel" Width="95"/>
                     <StackPanel x:Name="amountStackpanel" Width="95"/>
-                    <StackPanel x:Name="deleteButtonsStackpanel" Width="30"/>
+                    <StackPanel x:Name="dateStackpanel" Width="95"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

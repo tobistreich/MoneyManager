@@ -9,31 +9,32 @@ using System.Windows.Media;
 
 namespace MoneyManager
 {
-    internal class Category
+    internal class Dates
     {
         private int fontsize = 15;
         private int height = 30;
-        private ComboBox categoryCombobox; 
-        private StackPanel categoryStackpanel;
+        private DatePicker datesPicker;
+        private StackPanel dateStackpanel;
 
-        public Category(StackPanel stackPanel, ComboBox comboBox)
+        public Dates(StackPanel stackPanel, DatePicker datePicker)
         {
-            categoryStackpanel = stackPanel; 
-            categoryCombobox = comboBox; 
+            dateStackpanel = stackPanel;
+            datesPicker = datePicker;
         }
 
-        public void addCategory(bool isIncome)
+        public void addDate(bool isIncome)
         {
-            if (categoryCombobox != null && categoryCombobox.SelectedItem != null)
+            if (datesPicker != null && datesPicker.Text != null)
             {
-                string category = categoryCombobox.Text;
+                string date = datesPicker.Text;
                 Label newLabel = new Label();
                 newLabel.FontSize = fontsize;
                 newLabel.Height = height;
                 newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
-                newLabel.Content = category;
-                categoryStackpanel.Children.Add(newLabel);
-                if (isIncome == true )
+                newLabel.Content = date;
+                dateStackpanel.Children.Add(newLabel);
+
+                if (isIncome == true)
                 {
                     newLabel.Background = Brushes.Green;
                 }
