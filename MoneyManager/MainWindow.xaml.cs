@@ -106,7 +106,7 @@ namespace MoneyManager
 
             records.Add(record); 
 
-            using (var writer = new StreamWriter("expenses.csv", false)) // Truncate the file
+            using (var writer = new StreamWriter("data.csv", false)) // Truncate the file
             using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
                 csv.WriteRecords(records);
@@ -114,7 +114,7 @@ namespace MoneyManager
         }
         public void ReadCsvData()
         {
-            using (var reader = new StreamReader("expenses.csv"))
+            using (var reader = new StreamReader("data.csv"))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
                 records = csv.GetRecords<ExpenseRecord>().ToList();
