@@ -32,7 +32,7 @@ namespace MoneyManager
             InitializeComponent();
 
             ReadCsvData();
-            CheckBalance();
+            CheckBalanceColor();
             SetNull();
         }
         
@@ -70,7 +70,7 @@ namespace MoneyManager
 
                 WriteToCSV();
                 SetNull();
-                CheckBalance();
+                CheckBalanceColor();
             }
         }
         public void SetNull()
@@ -79,7 +79,7 @@ namespace MoneyManager
             nameTextbox.Text = "";
             amountTextbox.Text = "";
         }
-        public void CheckBalance()
+        public void CheckBalanceColor()
         {
             if (balance > 0)
             {
@@ -128,6 +128,16 @@ namespace MoneyManager
                     NewLabel(record.Category, categoryStackpanel, record.IsIncome);
                     NewLabel(record.Name, nameStackpanel, record.IsIncome);
                     NewLabel(record.Amount.ToString(), amountStackpanel, record.IsIncome);
+
+                    if (record.IsIncome == true)
+                    {
+                        balance += Convert.ToDouble(record.Amount);
+                    }
+                    else if (!record.IsIncome)
+                    {
+                        balance -= Convert.ToDouble(record.Amount);
+                    }
+                    balanceLabel.Content = balance + "€";
                 }
             }
         }

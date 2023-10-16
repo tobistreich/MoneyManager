@@ -33,14 +33,16 @@ namespace MoneyManager
                 newLabel.FontSize = fontsize;
                 newLabel.Height = height;
                 newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
-                newLabel.Content = amount;
+                
                 amountStackpanel.Children.Add(newLabel);
                 if (isIncome == true)
                 {
+                    newLabel.Content = amount + "€";
                     newLabel.Background = Brushes.Green;
                 }
                 else
                 {
+                    newLabel.Content = "-" + amount + "€";
                     newLabel.Background = Brushes.Red;
                 }
             }
