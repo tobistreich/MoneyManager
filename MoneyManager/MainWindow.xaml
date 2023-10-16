@@ -14,22 +14,47 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="0.75*"/>
         </Grid.ColumnDefinitions>
-        
+
         <StackPanel x:Name="Controls_StackPanel" Grid.Column="0">
-            <Grid x:Name="Buttons_StackPanel" Height="45">
+            <Rectangle Height="45" Fill="LightGray"/>
+            
+            <Label Content="Kategorie" FontSize="15" HorizontalContentAlignment="Center"/>
+            <ComboBox x:Name="categoryCombobox" Width="150">
+                <ComboBoxItem Content="Lebensmittel"/>
+                <ComboBoxItem Content="Steuer/Abgaben"/>
+                <ComboBoxItem Content="Einkommen"/>
+                <ComboBoxItem Content="Geschenk"/>
+                <ComboBoxItem Content="Abo/Vertrag"/>
+                <ComboBoxItem Content="Miete/Wohnen"/>
+                <ComboBoxItem Content="Mobilität"/>
+            </ComboBox>
+
+            <Rectangle Height="30"/>
+            
+            <Label Content="Name" FontSize="15" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="nameTextbox" x:FieldModifier="public" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
+            
+            <Rectangle Height="20"/>
+
+            <Label Content="Betrag" FontSize="15" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="amountTextbox" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
+
+            <Rectangle Height="30"/>
+
+            <Grid x:Name="Buttons_Grid" Height="45">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="Income" Content="Income" Grid.Column="0" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Income_Clicked">
+                <Button x:Name="income_button" Content="Einkommen" Grid.Column="0" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Income_Clicked">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="Expense" Content="Expense" Grid.Column="1" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Expense_Clicked">
+                <Button x:Name="expense_button" Content="Ausgabe" Grid.Column="1" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Expense_Clicked">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>
@@ -37,37 +62,6 @@
                     </Button.Resources>
                 </Button>
             </Grid>
-
-            <Label Content="Category" FontSize="15" HorizontalContentAlignment="Center"/>
-            <ComboBox x:Name="Category_ComboBox" Width="150">
-                <ComboBoxItem Content="Food/Drinks"/>
-                <ComboBoxItem Content="Tax"/>
-                <ComboBoxItem Content="Wage"/>
-                <ComboBoxItem Content="Gift"/>
-                <ComboBoxItem Content="Subscription/Contract"/>
-                <ComboBoxItem Content="Rent/Living"/>
-                <ComboBoxItem Content="Mobility"/>
-            </ComboBox>
-
-            <Rectangle Height="20"/>
-            
-            <Label Content="Name" FontSize="15" HorizontalContentAlignment="Center"/>
-            <TextBox x:Name="Name_TextBox" x:FieldModifier="public" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
-            
-            <Rectangle Height="20"/>
-
-            <Label Content="Amount" FontSize="15" HorizontalContentAlignment="Center"/>
-            <TextBox x:Name="Amount_TextBox" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
-
-            <Rectangle Height="20"/>
-
-            <Button x:Name="Add_Button" Height="50" Margin="5" Content="Add" FontSize="25" Click="add_inc_exp" IsDefault="True" Visibility="Collapsed">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
         </StackPanel>
         <Grid x:Name="Table_Grid" Grid.Column="1">
             <Grid.RowDefinitions>
@@ -76,24 +70,24 @@
             </Grid.RowDefinitions>
             
             <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <Label Content="Category" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="120" Background="LightGray"/>
+                <Label Content="Kategorie" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="120" Background="LightGray"/>
                 <Label Content="Name" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
-                <Label Content="Amount" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
+                <Label Content="Betrag" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
                 <Label HorizontalContentAlignment="Center" Height="45" Width="30" Background="LightGray"/>
                 <Rectangle Fill="LightGray" Width="300"/>
             </StackPanel>
             <ScrollViewer Grid.Row="1" HorizontalAlignment="Left" Background="White" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto">
-                <StackPanel x:Name="Table_StackPanel" Orientation="Horizontal">
-                    <StackPanel x:Name="Category_StackPanel" Width="120"/>
-                    <StackPanel x:Name="Name_StackPanel" Width="95"/>
-                    <StackPanel x:Name="Amount_StackPanel" Width="95"/>
-                    <StackPanel x:Name="Delete_Buttons_StackPanel" Width="30"/>
+                <StackPanel x:Name="tableStackpanel" Orientation="Horizontal">
+                    <StackPanel x:Name="categoryStackpanel" Width="120"/>
+                    <StackPanel x:Name="nameStackpanel" Width="95"/>
+                    <StackPanel x:Name="amountStackpanel" Width="95"/>
+                    <StackPanel x:Name="deleteButtonsStackpanel" Width="30"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
         <StackPanel Grid.Column="3">
-                <Label Content="Balance" FontSize="22" HorizontalContentAlignment="Center" Height="45" Background="LightGray"/>
-                <Label x:Name="Balance_Label" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
+                <Label Content="Saldo" FontSize="22" HorizontalContentAlignment="Center" Height="45" Background="LightGray"/>
+                <Label x:Name="balanceLabel" Content="0" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
         </StackPanel>
         
     </Grid>

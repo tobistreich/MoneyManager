@@ -9,256 +9,163 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using System.Linq;
 
 namespace MoneyManager
 {
+    public class ExpenseRecord
+    {
+        public string Category { get; set; }
+        public string Name { get; set; }
+        public string Amount { get; set; }
+        public bool IsIncome { get; set; }
+
+    }
     public partial class MainWindow : Window
     {
-        
         public bool isIncome;
-        int fontsize = 15;
-        int height = 30;
-        double balance = 0;
+        public double balance = 0.0;
+        private List<ExpenseRecord> records = new List<ExpenseRecord>();
 
         public MainWindow()
         {
             InitializeComponent();
-            CSV_Init_isIncome();
-            CSV_Init_Category();
-            CSV_Init_Name();
-            CSV_Init_Amount();
-            CheckBalance();     
+
+            ReadCsvData();
+            CheckBalanceColor();
+            SetNull();
         }
-        private void add_inc_exp(object sender, RoutedEventArgs e)
-        {
-            string name = Name_TextBox.Text;
-            double amount = Convert.ToDouble(Amount_TextBox.Text);
-            #region new category
-
-            CSV_Add_Category();
-
-            #region add category label
-            string category = Category_ComboBox.Text;
-            Label new_category_label = new Label();
-            new_category_label.FontSize = fontsize;
-            new_category_label.Height = height;
-            new_category_label.HorizontalContentAlignment = HorizontalAlignment.Center;
-            new_category_label.Content = Category_ComboBox.Text;
-            Category_StackPanel.Children.Add(new_category_label);
-            #endregion
-
-            #endregion
-
-            #region new name
-            CSV_Add_Name();
-
-            #region add name label
-            Label new_name_label = new Label();
-            new_name_label.FontSize = fontsize;
-            new_name_label.Height = height;
-            new_name_label.Content = Name_TextBox.Text;
-            new_name_label.HorizontalContentAlignment = HorizontalAlignment.Center;
-            Name_StackPanel.Children.Add(new_name_label);
-            #endregion
-
-            if (isIncome == true)
-            {
-                new_name_label.Background = Brushes.Green;
-            }
-            else
-            {
-                new_name_label.Background = Brushes.Red;
-            }
-
-            Name_TextBox.Text = "";
-            
-            #endregion
-
-            #region new amount
-            CSV_Add_Amount();
-
-            Label new_amount_label = new Label();
-            new_amount_label.FontSize = fontsize;
-            new_amount_label.Height = height;
-            new_amount_label.HorizontalContentAlignment = HorizontalAlignment.Center;
-            if (isIncome == true)
-            {
-                new_amount_label.Background = Brushes.Green;
-                new_amount_label.Content = "+" + Amount_TextBox.Text + "€";
-               
-            }
-            else
-            {
-                new_amount_label.Background = Brushes.Red;
-                new_amount_label.Content = "-" + Amount_TextBox.Text + "€";
-                
-            }
-            if (isIncome == false)
-            {
-                balance -= amount;
-            }
-            else if (isIncome == true)
-            {
-                balance -= amount;
-            }
-
-            Amount_TextBox.Text = "";
-            Amount_StackPanel.Children.Add(new_amount_label);
-            #endregion
-
-            
-
-            CSV_Add_IsIncome();
-            CheckIncome();
-            CheckBalance();
-            Add_Button.Visibility = Visibility.Collapsed; 
-        }
+        
 
 
         private void Income_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = true;
-            Add_Button.Visibility = Visibility.Visible;
+            balance += Convert.ToDouble(amountTextbox.Text);
+            balanceLabel.Content = balance + "€";
+            New_inc_exp();
         }
         private void Expense_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = false;
-            Add_Button.Visibility = Visibility.Visible;
+            balance -= Convert.ToDouble(amountTextbox.Text);
+            balanceLabel.Content = balance + "€";
+            New_inc_exp();
         }
-
-        private void CheckBalance()
+        public void New_inc_exp()
         {
-            
-            if (balance == 0) 
+            Category categoryClass = new Category(categoryStackpanel, categoryCombobox);
+            Name nameClass = new Name(nameStackpanel, nameTextbox);
+            Amount amountClass = new Amount(amountStackpanel, amountTextbox);
+
+            if (categoryCombobox == null || nameTextbox == null || amountTextbox == null)
             {
-                Balance_Label.Background = Brushes.Gray;
+                MessageBox.Show("Bitte überprüfe deine Eingaben nocheinmal!");
             }
-            else if (balance > 0) 
+            else
             {
-                Balance_Label.Background = Brushes.Green;
+                categoryClass.addCategory(isIncome);
+                nameClass.addName(isIncome);
+                amountClass.addAmount(isIncome);
+
+                WriteToCSV();
+                SetNull();
+                CheckBalanceColor();
+            }
+        }
+        public void SetNull()
+        {
+            categoryCombobox.Text = null;
+            nameTextbox.Text = "";
+            amountTextbox.Text = "";
+        }
+        public void CheckBalanceColor()
+        {
+            if (balance > 0)
+            {
+                balanceLabel.Background= Brushes.Green;
             }
             else if (balance < 0)
             {
-                Balance_Label.Background = Brushes.Red;
+                balanceLabel.Background= Brushes.Red;
             }
-            Balance_Label.Content = balance.ToString() + "€";
+            else
+            {
+                balanceLabel.Background = Brushes.Gray;
+            }
         }
-        private void CheckIncome()
+        public void WriteToCSV()
         {
-            
-        }
+            var record = new ExpenseRecord
+            {
+                Category = categoryCombobox.Text,
+                Name = nameTextbox.Text,
+                Amount = amountTextbox.Text,
+                IsIncome = isIncome
+            };
 
-        private void CSV_Add_Category()
-        {
-            string category = Category_ComboBox.Text;
-            using (var writer = new StreamWriter("category.csv", true))
-            {
-                writer.WriteLine(category);
-            }    
-        }
-        private void CSV_Add_Name()
-        {
-            string name = Name_TextBox.Text;
-            using (var writer = new StreamWriter("name.csv", true))
-            {
-                writer.WriteLine(name);
-            }
-        }
-        private void CSV_Add_Amount()
-        {
-            string amount = Convert.ToString(Amount_TextBox.Text);
-            using (var writer = new StreamWriter("amount.csv", true))
-            {
-                writer.WriteLine(amount);
-            }
-        }
-        private void CSV_Add_IsIncome()
-        {
-            Convert.ToString(isIncome);
-            using (var writer = new StreamWriter("isIncome.csv", true))
-            {
-                writer.WriteLine(isIncome);
-            }
-        }
+            records.Add(record); 
 
-        private void CSV_Init_Category()
-        {
-            string[] csvCategorys = File.ReadAllLines("category.csv");
-            foreach (string csvCategory in csvCategorys)
+            using (var writer = new StreamWriter("expenses.csv", false)) // Truncate the file
+            using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                Label new_init_label = new Label();
-                new_init_label.Content = csvCategory;
-                new_init_label.FontSize = fontsize;
-                new_init_label.Height = height;
-                new_init_label.HorizontalContentAlignment = HorizontalAlignment.Center;
+                csv.WriteRecords(records);
+            }
+        }
+        public void ReadCsvData()
+        {
+            using (var reader = new StreamReader("expenses.csv"))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
+            {
+                records = csv.GetRecords<ExpenseRecord>().ToList();
 
-                if (isIncome == true)
+                categoryStackpanel.Children.Clear();
+                nameStackpanel.Children.Clear();
+                amountStackpanel.Children.Clear();
+
+                foreach (var record in records)
                 {
-                    new_init_label.Background = Brushes.Green;
+                    NewLabel(record.Category, categoryStackpanel, record.IsIncome);
+                    NewLabel(record.Name, nameStackpanel, record.IsIncome);
+                    NewLabel(record.Amount.ToString(), amountStackpanel, record.IsIncome);
+
+                    if (record.IsIncome == true)
+                    {
+                        balance += Convert.ToDouble(record.Amount);
+                    }
+                    else if (!record.IsIncome)
+                    {
+                        balance -= Convert.ToDouble(record.Amount);
+                    }
+                    balanceLabel.Content = balance + "€";
                 }
-                else
-                {
-                    new_init_label.Background = Brushes.Red;
-                }
-                Category_StackPanel.Children.Add(new_init_label);
             }
         }
-        private void CSV_Init_Name()
+        public void NewLabel(string content, StackPanel stackpanel, bool isIncome)
         {
-            string[] csvNames = File.ReadAllLines("name.csv");
-            foreach (string csvName in csvNames)
+            Label newLabel = new Label();
+            newLabel.Content = content;
+            newLabel.FontSize = 15;
+            newLabel.Height = 30;
+            newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            if (isIncome)
             {
-                Label new_init_label = new Label();
-                new_init_label.Content = csvName;
-                new_init_label.FontSize = fontsize;
-                new_init_label.Height = height;
-                new_init_label.HorizontalContentAlignment = HorizontalAlignment.Center;
-                
-                if (isIncome == true)
-                {
-                    new_init_label.Background = Brushes.Green;
-                }
-                else
-                {
-                    new_init_label.Background = Brushes.Red;
-                }
-                Name_StackPanel.Children.Add(new_init_label);
+                newLabel.Background = Brushes.Green;
             }
-        }
-        private void CSV_Init_Amount()
-        {
-            string[] csvAmounts = File.ReadAllLines("amount.csv");
-            foreach (string csvAmount in csvAmounts)
+            else
             {
-                Label new_init_label = new Label();
-                new_init_label.FontSize = fontsize;
-                new_init_label.Height = height;
-                new_init_label.HorizontalContentAlignment = HorizontalAlignment.Center;
-                if (isIncome == true)
-                {
-                    new_init_label.Background = Brushes.Green;
-                    new_init_label.Content = "+" + csvAmount + "€";
-                }
-                else if (isIncome == false)
-                {
-                    new_init_label.Background = Brushes.Red;
-                    new_init_label.Content = "-" + csvAmount + "€";
-                }
-                Amount_StackPanel.Children.Add(new_init_label);
+                newLabel.Background = Brushes.Red;
             }
-        }
-        private void CSV_Init_isIncome()
-        {
-            string[] csvisIncomes = File.ReadAllLines("isIncome.csv");
-            foreach (string csvisIncome in csvisIncomes)
+            if (stackpanel == amountStackpanel && isIncome == true)
             {
-                Label new_init_label = new Label();
-                new_init_label.Content = csvisIncome;
-                new_init_label.FontSize = fontsize;
-                new_init_label.Height = height;
-                new_init_label.HorizontalContentAlignment = HorizontalAlignment.Center;
-                isIncome = Convert.ToBoolean(csvisIncome);
+                newLabel.Content = content + "€";
             }
+            else if (stackpanel == amountStackpanel && isIncome == false)
+            {
+                newLabel.Content = "-" + content + "€";
+            }
+
+            stackpanel.Children.Add(newLabel);
         }
     }
 }

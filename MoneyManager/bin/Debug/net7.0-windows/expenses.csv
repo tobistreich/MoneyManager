@@ -1,0 +1,6 @@
+Category,Name,Amount,IsIncome
+Tax,KfZ-Steuer August,50000,False
+Wage,sidion Gehalt,"12,99",True
+Wage,sidion Jahresgehalt,"1,65",True
+Tax,Steuerhinterziehung,90900000,True
+Abo/Vertrag,Netflix,500000000,False
