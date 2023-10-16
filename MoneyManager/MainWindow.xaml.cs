@@ -19,7 +19,7 @@ namespace MoneyManager
         public string Name { get; set; }
         public string Amount { get; set; }
         public bool IsIncome { get; set; }
-        public string Date {  get; set; }
+        public DateTime Date {  get; set; }
     }
     public partial class MainWindow : Window
     {
@@ -105,7 +105,7 @@ namespace MoneyManager
                 Name = nameTextbox.Text,
                 Amount = amountTextbox.Text,
                 IsIncome = isIncome,
-                Date = datesPicker.Text,
+                Date = datesPicker.SelectedDate ?? DateTime.Now
             };
 
             records.Add(record); 
@@ -115,7 +115,10 @@ namespace MoneyManager
             {
                 csv.WriteRecords(records);
             }
+
+            records = records.OrderBy(r => r.Date).ToList();
         }
+
         public void ReadCsvData()
         {
             using (var reader = new StreamReader("data.csv"))
@@ -128,12 +131,15 @@ namespace MoneyManager
                 amountStackpanel.Children.Clear();
                 dateStackpanel.Children.Clear();
 
+                records = records.OrderBy(r => r.Date).ToList();
+
                 foreach (var record in records)
                 {
+                    DateTime dateWithoutTime = record.Date.Date;
                     NewLabel(record.Category, categoryStackpanel, record.IsIncome);
                     NewLabel(record.Name, nameStackpanel, record.IsIncome);
                     NewLabel(record.Amount.ToString(), amountStackpanel, record.IsIncome);
-                    NewLabel(record.Date, dateStackpanel, record.IsIncome);
+                    NewLabel(record.Date.ToString(), dateStackpanel, record.IsIncome);
 
                     if (record.IsIncome == true)
                     {

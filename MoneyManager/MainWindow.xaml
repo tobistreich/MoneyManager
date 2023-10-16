@@ -77,7 +77,7 @@
                 <Label Content="Kategorie" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="120" Background="LightGray"/>
                 <Label Content="Name" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
                 <Label Content="Betrag" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
-                <Label Content="Datum" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
+                <Label Content="Datum" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="85" Background="LightGray"/>
                 
                 <Rectangle Fill="LightGray" Width="300"/>
             </StackPanel>
@@ -86,7 +86,7 @@
                     <StackPanel x:Name="categoryStackpanel" Width="120"/>
                     <StackPanel x:Name="nameStackpanel" Width="95"/>
                     <StackPanel x:Name="amountStackpanel" Width="95"/>
-                    <StackPanel x:Name="dateStackpanel" Width="95"/>
+                    <StackPanel x:Name="dateStackpanel" Width="85"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
