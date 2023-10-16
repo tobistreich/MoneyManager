@@ -9,19 +9,30 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using System.Linq;
 
 namespace MoneyManager
 {
+    public class ExpenseRecord
+    {
+        public string Category { get; set; }
+        public string Name { get; set; }
+        public double Amount { get; set; }
+        public bool IsIncome { get; set; }
+    }
     public partial class MainWindow : Window
     {
         public bool isIncome;
         public double balance = 0.0;
+        private List<ExpenseRecord> records = new List<ExpenseRecord>();
+
         public MainWindow()
         {
             InitializeComponent();
 
+            ReadCsvData();
             CheckBalance();
-            setNull();
+            SetNull();
         }
         
 
@@ -40,7 +51,7 @@ namespace MoneyManager
             balanceLabel.Content = balance + "€";
             new_inc_exp();
         }
-        public void new_inc_exp()
+        public void New_inc_exp()
         {
             Category categoryClass = new Category(categoryStackpanel, categoryCombobox);
             Name nameClass = new Name(nameStackpanel, nameTextbox);
@@ -56,11 +67,12 @@ namespace MoneyManager
                 nameClass.addName(isIncome);
                 amountClass.addAmount(isIncome);
 
-                setNull();
+                WriteToCSV();
+                SetNull();
                 CheckBalance();
             }
         }
-        public void setNull()
+        public void SetNull()
         {
             categoryCombobox.Text = null;
             nameTextbox.Text = "";
@@ -79,6 +91,40 @@ namespace MoneyManager
             else
             {
                 balanceLabel.Background = Brushes.Gray;
+            }
+        }
+        public void WriteToCSV()
+        {
+            var record = new ExpenseRecord
+            {
+                Category = categoryCombobox.Text,
+                Name = nameTextbox.Text,
+                Amount = Convert.ToDouble(amountTextbox.Text),
+                IsIncome = isIncome
+            };
+
+            var records = new List<ExpenseRecord> { record };
+
+            using (var writer = new StreamWriter("expenses.csv", true))
+            using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
+            {
+                csv.WriteRecords(records);
+            }
+        }
+        public void ReadCsvData()
+        {
+            using (var reader = new StreamReader("expenses.csv"))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
+            {
+                records = csv.GetRecords<ExpenseRecord>().ToList();
+
+                if (records.Count > 0)
+                {
+                    var lastRecord = records.Last();
+                    labelCategory.Content = lastRecord.Category;
+                    labelName.Content = lastRecord.Name;
+                    labelAmount.Content = lastRecord.Amount.ToString("C");
+                }
             }
         }
     }
