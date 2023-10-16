@@ -16,26 +16,27 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel x:Name="Controls_StackPanel" Grid.Column="0">
-            <Rectangle Height="30"/>
-            <Label Content="Category" FontSize="15" HorizontalContentAlignment="Center"/>
+            <Rectangle Height="45" Fill="LightGray"/>
+            
+            <Label Content="Kategorie" FontSize="15" HorizontalContentAlignment="Center"/>
             <ComboBox x:Name="categoryCombobox" Width="150">
-                <ComboBoxItem Content="Food/Drinks"/>
-                <ComboBoxItem Content="Tax"/>
-                <ComboBoxItem Content="Wage"/>
-                <ComboBoxItem Content="Gift"/>
-                <ComboBoxItem Content="Subscription/Contract"/>
-                <ComboBoxItem Content="Rent/Living"/>
-                <ComboBoxItem Content="Mobility"/>
+                <ComboBoxItem Content="Lebensmittel"/>
+                <ComboBoxItem Content="Steuer/Abgaben"/>
+                <ComboBoxItem Content="Einkommen"/>
+                <ComboBoxItem Content="Geschenk"/>
+                <ComboBoxItem Content="Abo/Vertrag"/>
+                <ComboBoxItem Content="Miete/Wohnen"/>
+                <ComboBoxItem Content="Mobilität"/>
             </ComboBox>
 
-            <Rectangle Height="20"/>
+            <Rectangle Height="30"/>
             
             <Label Content="Name" FontSize="15" HorizontalContentAlignment="Center"/>
             <TextBox x:Name="nameTextbox" x:FieldModifier="public" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
             
             <Rectangle Height="20"/>
 
-            <Label Content="Amount" FontSize="15" HorizontalContentAlignment="Center"/>
+            <Label Content="Betrag" FontSize="15" HorizontalContentAlignment="Center"/>
             <TextBox x:Name="amountTextbox" Height="25" Width="150" FontSize="20" HorizontalAlignment="Center"/>
 
             <Rectangle Height="30"/>
@@ -69,9 +70,9 @@
             </Grid.RowDefinitions>
             
             <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <Label Content="Category" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="120" Background="LightGray"/>
+                <Label Content="Kategorie" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="120" Background="LightGray"/>
                 <Label Content="Name" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
-                <Label Content="Amount" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
+                <Label Content="Betrag" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
                 <Label HorizontalContentAlignment="Center" Height="45" Width="30" Background="LightGray"/>
                 <Rectangle Fill="LightGray" Width="300"/>
             </StackPanel>
@@ -85,7 +86,7 @@
             </ScrollViewer>
         </Grid>
         <StackPanel Grid.Column="3">
-                <Label Content="Balance" FontSize="22" HorizontalContentAlignment="Center" Height="45" Background="LightGray"/>
+                <Label Content="Saldo" FontSize="22" HorizontalContentAlignment="Center" Height="45" Background="LightGray"/>
                 <Label x:Name="balanceLabel" Content="0" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
         </StackPanel>
         
