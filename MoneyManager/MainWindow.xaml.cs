@@ -15,7 +15,6 @@ namespace MoneyManager
 {
     public class Entries
     {
-        public int ID { get; set; }
         public string Category { get; set; }
         public string Name { get; set; }
         public string Amount { get; set; }
@@ -25,7 +24,6 @@ namespace MoneyManager
     public partial class MainWindow : Window
     {
         public bool isIncome;
-        public int iD;
         public double balance = 0.0;
         private List<Entries> records = new List<Entries>();
 
@@ -85,7 +83,6 @@ namespace MoneyManager
         {
             var record = new Entries
             {
-                ID = iD,
                 Category = categoryCombobox.Text,
                 Name = nameTextbox.Text,
                 Amount = amountTextbox.Text,
@@ -136,6 +133,7 @@ namespace MoneyManager
             newLabel.FontSize = 15;
             newLabel.Height = 30;
             newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+
             if (isIncome)
             {
                 newLabel.Background = Brushes.LightGreen;
@@ -179,7 +177,6 @@ namespace MoneyManager
                 CheckBalanceColor();
                 getIncomePerDay();
             }
-            
         }
         public void CheckBalanceColor()
         {
@@ -215,8 +212,6 @@ namespace MoneyManager
             {
                 incomePerDayLabel.Background = Brushes.OrangeRed;
             }
-            
-
         }
     }
 }
