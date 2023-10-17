@@ -32,7 +32,6 @@ namespace MoneyManager
             InitializeComponent();
 
             ReadCsvData();
-            CheckBalanceColor();
             SetNull();
         }
 
@@ -79,21 +78,7 @@ namespace MoneyManager
             amountTextbox.Text = "";
             datesPicker.Text = null;
         }
-        public void CheckBalanceColor()
-        {
-            if (balance > 0)
-            {
-                balanceLabel.Background= Brushes.LightGreen;
-            }
-            else if (balance < 0)
-            {
-                balanceLabel.Background= Brushes.IndianRed;
-            }
-            else
-            {
-                balanceLabel.Background = Brushes.Gray;
-            }
-        }
+        
         public void WriteToCSV()
         {
             var record = new ExpenseRecord
@@ -137,17 +122,7 @@ namespace MoneyManager
                     NewLabel(record.Amount.ToString(), amountStackpanel, record.IsIncome);
                     NewLabel(record.Date.ToString(), dateStackpanel, record.IsIncome);
 
-                    if (record.IsIncome == true)
-                    {
-                        balance += Convert.ToDouble(record.Amount);
-                    }
-                    else if (!record.IsIncome)
-                    {
-                        balance -= Convert.ToDouble(record.Amount);
-                    }
-                    balance = Math.Round(balance, 2);
-                    balanceLabel.Content = balance + "€";
-                    getIncomePerDay();
+                    updateBalance();
                 }
             }
         }
@@ -190,14 +165,33 @@ namespace MoneyManager
                 balance += Convert.ToDouble(amountTextbox.Text);
                 balance = Math.Round(balance, 2);
                 balanceLabel.Content = balance + "€";
+                CheckBalanceColor();
+                getIncomePerDay();
             }
             else
             {
                 balance -= Convert.ToDouble(amountTextbox.Text);
                 balance = Math.Round(balance, 2);
                 balanceLabel.Content = balance + "€";
+                CheckBalanceColor();
+                getIncomePerDay();
             }
             
+        }
+        public void CheckBalanceColor()
+        {
+            if (balance > 0)
+            {
+                balanceLabel.Background = Brushes.LightGreen;
+            }
+            else if (balance < 0)
+            {
+                balanceLabel.Background = Brushes.IndianRed;
+            }
+            else
+            {
+                balanceLabel.Background = Brushes.Gray;
+            }
         }
 
         public void getIncomePerDay()
