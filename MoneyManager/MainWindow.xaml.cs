@@ -38,13 +38,13 @@ namespace MoneyManager
         private void Income_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = true;
-            updateBalance();
+            updateBalance(Convert.ToDouble(amountTextbox.Text), isIncome);
             New_inc_exp();
         }
         private void Expense_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = false;
-            updateBalance();
+            updateBalance(Convert.ToDouble(amountTextbox.Text), isIncome);
             New_inc_exp();
         }
         public void New_inc_exp()
@@ -117,12 +117,13 @@ namespace MoneyManager
                 foreach (var record in records)
                 {
                     DateTime dateWithoutTime = record.Date.Date;
+
                     NewLabel(record.Category, categoryStackpanel, record.IsIncome);
                     NewLabel(record.Name, nameStackpanel, record.IsIncome);
                     NewLabel(record.Amount.ToString(), amountStackpanel, record.IsIncome);
                     NewLabel(record.Date.ToString(), dateStackpanel, record.IsIncome);
 
-                    updateBalance();
+                    updateBalance(Convert.ToDouble(record.Amount), record.IsIncome);
                 }
             }
         }
@@ -159,19 +160,19 @@ namespace MoneyManager
             mainWindow.Show();
             this.Close();
         }
-        public void updateBalance()
+        public void updateBalance(double amount, bool isIncome)
         {
-            if (isIncome)
+            if (isIncome == true)
             {
-                balance += Convert.ToDouble(amountTextbox.Text);
+                balance += Convert.ToDouble(amount);
                 balance = Math.Round(balance, 2);
                 balanceLabel.Content = balance + "€";
                 CheckBalanceColor();
                 getIncomePerDay();
             }
-            else
+            else if (isIncome == false)
             {
-                balance -= Convert.ToDouble(amountTextbox.Text);
+                balance -= Convert.ToDouble(amount);
                 balance = Math.Round(balance, 2);
                 balanceLabel.Content = balance + "€";
                 CheckBalanceColor();
