@@ -83,11 +83,11 @@ namespace MoneyManager
         {
             if (balance > 0)
             {
-                balanceLabel.Background= Brushes.Green;
+                balanceLabel.Background= Brushes.LightGreen;
             }
             else if (balance < 0)
             {
-                balanceLabel.Background= Brushes.Red;
+                balanceLabel.Background= Brushes.IndianRed;
             }
             else
             {
@@ -160,11 +160,11 @@ namespace MoneyManager
             newLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
             if (isIncome)
             {
-                newLabel.Background = Brushes.Green;
+                newLabel.Background = Brushes.LightGreen;
             }
             else
             {
-                newLabel.Background = Brushes.Red;
+                newLabel.Background = Brushes.OrangeRed;
             }
             if (stackpanel == amountStackpanel && isIncome == true)
             {
@@ -211,12 +211,12 @@ namespace MoneyManager
 
             if (incomePerDay > 0)
             {
-                incomePerDayLabel.Background = Brushes.Green;
+                incomePerDayLabel.Background = Brushes.LightGreen;
                 incomePerDayLabel.Content = incomePerDay.ToString() + "€";
             }
             else if (incomePerDay < 0)
             {
-                incomePerDayLabel.Background = Brushes.Red;
+                incomePerDayLabel.Background = Brushes.OrangeRed;
             }
             
 

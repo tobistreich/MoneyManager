@@ -37,12 +37,12 @@ namespace MoneyManager
                 if (isIncome == true)
                 {
                     newLabel.Content = amount + "€";
-                    newLabel.Background = Brushes.Green;
+                    newLabel.Background = Brushes.LightGreen;
                 }
                 else
                 {
                     newLabel.Content = "-" + amount + "€";
-                    newLabel.Background = Brushes.Red;
+                    newLabel.Background = Brushes.OrangeRed;
                 }
             }
         }

@@ -36,11 +36,11 @@ namespace MoneyManager
 
                 if (isIncome == true)
                 {
-                    newLabel.Background = Brushes.Green;
+                    newLabel.Background = Brushes.LightGreen;
                 }
                 else
                 {
-                    newLabel.Background = Brushes.Red;
+                    newLabel.Background = Brushes.OrangeRed;
                 }
             }
         }
