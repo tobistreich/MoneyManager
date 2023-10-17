@@ -31,17 +31,17 @@ namespace MoneyManager
         {
             InitializeComponent();
 
-            ReadCsvData();
+            ReadCSV();
             SetNull();
         }
 
-        private void Income_Clicked(object sender, RoutedEventArgs e)
+        private void IncomeButtonClicked(object sender, RoutedEventArgs e)
         {
             isIncome = true;
             updateBalance(Convert.ToDouble(amountTextbox.Text), isIncome);
             New_inc_exp();
         }
-        private void Expense_Clicked(object sender, RoutedEventArgs e)
+        private void ExpenseButtonClicked(object sender, RoutedEventArgs e)
         {
             isIncome = false;
             updateBalance(Convert.ToDouble(amountTextbox.Text), isIncome);
@@ -65,21 +65,13 @@ namespace MoneyManager
                 amountClass.AddAmount(isIncome);
                 datesClass.AddDate(isIncome);
 
-                WriteToCSV();
+                WriteCSV();
                 SetNull();
                 CheckBalanceColor();
                 getIncomePerDay();
             }
         }
-        public void SetNull()
-        {
-            categoryCombobox.Text = null;
-            nameTextbox.Text = "";
-            amountTextbox.Text = "";
-            datesPicker.Text = null;
-        }
-        
-        public void WriteToCSV()
+        public void WriteCSV()
         {
             var record = new Entries
             {
@@ -100,7 +92,7 @@ namespace MoneyManager
 
             records = records.OrderBy(r => r.Date).ToList();
         }
-        public void ReadCsvData()
+        public void ReadCSV()
         {
             using (var reader = new StreamReader("data.csv"))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
@@ -154,12 +146,6 @@ namespace MoneyManager
 
             stackpanel.Children.Add(newLabel);
         }
-        private void RestartWindow(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
-        }
         public void updateBalance(double amount, bool isIncome)
         {
             if (isIncome == true)
@@ -194,7 +180,6 @@ namespace MoneyManager
                 balanceLabel.Background = Brushes.Gray;
             }
         }
-
         public void getIncomePerDay()
         {
             DateTime currentDate = DateTime.Now;
@@ -214,5 +199,40 @@ namespace MoneyManager
                 incomePerDayLabel.Background = Brushes.OrangeRed;
             }
         }
+        public void ResetAll()
+        {
+            categoryStackpanel.Children.Clear();
+            nameStackpanel.Children.Clear();
+            amountStackpanel.Children.Clear();
+            dateStackpanel.Children.Clear();
+            balance = 0.00;
+
+            string filePath = "data.csv";
+            File.WriteAllText(filePath, string.Empty);
+            RestartWindow();
+        }
+        public void ResetButtonClicked(object sender, EventArgs e)
+        {
+            Confirmation confirmation = new Confirmation();
+            confirmation.Show();
+        }
+        public void RestartWindow()
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+        private void RestartButtonClicked(object sender, RoutedEventArgs e)
+        {
+            RestartWindow();
+        }
+        public void SetNull()
+        {
+            categoryCombobox.Text = null;
+            nameTextbox.Text = "";
+            amountTextbox.Text = "";
+            datesPicker.Text = null;
+        }
+
     }
 }

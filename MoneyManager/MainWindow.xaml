@@ -21,7 +21,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="4.5*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="restartButton" Content="↻" VerticalContentAlignment="Top" FontSize="30" BorderBrush="LightGray" Background="LightGray" Click="RestartWindow"></Button>
+                <Button x:Name="restartButton" Content="↻" VerticalContentAlignment="Top" FontSize="30" BorderBrush="LightGray" Background="LightGray" Click="RestartButtonClicked"></Button>
                 <Rectangle Grid.Column ="1" Height="45" Fill="LightGray"/>
             </Grid>
             
@@ -60,14 +60,14 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="income_button" Content="Einkommen" Grid.Column="0" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Income_Clicked">
+                <Button x:Name="income_button" Content="Einkommen" Grid.Column="0" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="IncomeButtonClicked">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="expense_button" Content="Ausgabe" Grid.Column="1" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="Expense_Clicked">
+                <Button x:Name="expense_button" Content="Ausgabe" Grid.Column="1" FontSize="22" Margin="3" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="ExpenseButtonClicked">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>
@@ -106,6 +106,13 @@
             
             <Label Content="Einkommen pro Tag" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="45" Background="LightGray"/>
             <Label x:Name="incomePerDayLabel" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
+            <Button x:Name="resetButton" Content="Zurücksetzen" Grid.Column="0" FontSize="22" Margin="10, 140, 10, 0" Background="LightGray" BorderBrush="Black" BorderThickness="0.5" Click="ResetButtonClicked">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
         
     </Grid>
