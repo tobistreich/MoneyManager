@@ -35,21 +35,17 @@ namespace MoneyManager
             CheckBalanceColor();
             SetNull();
         }
-        
-
 
         private void Income_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = true;
-            balance += Convert.ToDouble(amountTextbox.Text);
-            balanceLabel.Content = balance + "€";
+            updateBalance();
             New_inc_exp();
         }
         private void Expense_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = false;
-            balance -= Convert.ToDouble(amountTextbox.Text);
-            balanceLabel.Content = balance + "€";
+            updateBalance();
             New_inc_exp();
         }
         public void New_inc_exp()
@@ -118,7 +114,6 @@ namespace MoneyManager
 
             records = records.OrderBy(r => r.Date).ToList();
         }
-
         public void ReadCsvData()
         {
             using (var reader = new StreamReader("data.csv"))
@@ -149,6 +144,7 @@ namespace MoneyManager
                     {
                         balance -= Convert.ToDouble(record.Amount);
                     }
+                    balance = Math.Round(balance, 2);
                     balanceLabel.Content = balance + "€";
                 }
             }
@@ -179,12 +175,27 @@ namespace MoneyManager
 
             stackpanel.Children.Add(newLabel);
         }
-
         private void RestartWindow(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+        public void updateBalance()
+        {
+            if (isIncome)
+            {
+                balance += Convert.ToDouble(amountTextbox.Text);
+                balance = Math.Round(balance, 2);
+                balanceLabel.Content = balance + "€";
+            }
+            else
+            {
+                balance -= Convert.ToDouble(amountTextbox.Text);
+                balance = Math.Round(balance, 2);
+                balanceLabel.Content = balance + "€";
+            }
+            
         }
     }
 }
