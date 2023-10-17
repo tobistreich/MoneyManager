@@ -218,8 +218,8 @@ namespace MoneyManager
         }
         public void RestartWindow()
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            MainWindow newMainWindow = new MainWindow();
+            newMainWindow.Show();
             this.Close();
         }
         private void RestartButtonClicked(object sender, RoutedEventArgs e)
