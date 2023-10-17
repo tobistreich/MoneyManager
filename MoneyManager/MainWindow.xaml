@@ -83,25 +83,28 @@
             </Grid.RowDefinitions>
             
             <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <Label Content="Kategorie" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="120" Background="LightGray"/>
-                <Label Content="Name" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
-                <Label Content="Betrag" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="95" Background="LightGray"/>
+                <Label Content="Kategorie" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="0" Background="LightGray"/>
+                <Label Content="Name" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="150" Background="LightGray"/>
+                <Label Content="Betrag" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="120" Background="LightGray"/>
                 <Label Content="Datum" FontSize="22" HorizontalContentAlignment="Center" Height="45" Width="85" Background="LightGray"/>
                 
                 <Rectangle Fill="LightGray" Width="300"/>
             </StackPanel>
             <ScrollViewer Grid.Row="1" HorizontalAlignment="Left" Background="White" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto">
                 <StackPanel x:Name="tableStackpanel" Orientation="Horizontal">
-                    <StackPanel x:Name="categoryStackpanel" Width="120"/>
-                    <StackPanel x:Name="nameStackpanel" Width="95"/>
-                    <StackPanel x:Name="amountStackpanel" Width="95"/>
+                    <StackPanel x:Name="categoryStackpanel" Width="0"/>
+                    <StackPanel x:Name="nameStackpanel" Width="150"/>
+                    <StackPanel x:Name="amountStackpanel" Width="120"/>
                     <StackPanel x:Name="dateStackpanel" Width="85"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
         <StackPanel Grid.Column="3">
-                <Label Content="Saldo" FontSize="22" HorizontalContentAlignment="Center" Height="45" Background="LightGray"/>
-                <Label x:Name="balanceLabel" Content="0" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
+            <Label Content="Saldo" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="45" Background="LightGray"/>
+            <Label x:Name="balanceLabel" Content="0" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
+            
+            <Label Content="Einkommen pro Tag" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="45" Background="LightGray"/>
+            <Label x:Name="incomePerDayLabel" Height="40" FontSize="20" HorizontalContentAlignment="Center"/>
         </StackPanel>
         
     </Grid>

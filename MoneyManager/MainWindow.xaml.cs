@@ -35,21 +35,17 @@ namespace MoneyManager
             CheckBalanceColor();
             SetNull();
         }
-        
-
 
         private void Income_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = true;
-            balance += Convert.ToDouble(amountTextbox.Text);
-            balanceLabel.Content = balance + "€";
+            updateBalance();
             New_inc_exp();
         }
         private void Expense_Clicked(object sender, RoutedEventArgs e)
         {
             isIncome = false;
-            balance -= Convert.ToDouble(amountTextbox.Text);
-            balanceLabel.Content = balance + "€";
+            updateBalance();
             New_inc_exp();
         }
         public void New_inc_exp()
@@ -73,6 +69,7 @@ namespace MoneyManager
                 WriteToCSV();
                 SetNull();
                 CheckBalanceColor();
+                getIncomePerDay();
             }
         }
         public void SetNull()
@@ -118,7 +115,6 @@ namespace MoneyManager
 
             records = records.OrderBy(r => r.Date).ToList();
         }
-
         public void ReadCsvData()
         {
             using (var reader = new StreamReader("data.csv"))
@@ -149,7 +145,9 @@ namespace MoneyManager
                     {
                         balance -= Convert.ToDouble(record.Amount);
                     }
+                    balance = Math.Round(balance, 2);
                     balanceLabel.Content = balance + "€";
+                    getIncomePerDay();
                 }
             }
         }
@@ -179,12 +177,49 @@ namespace MoneyManager
 
             stackpanel.Children.Add(newLabel);
         }
-
         private void RestartWindow(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+        public void updateBalance()
+        {
+            if (isIncome)
+            {
+                balance += Convert.ToDouble(amountTextbox.Text);
+                balance = Math.Round(balance, 2);
+                balanceLabel.Content = balance + "€";
+            }
+            else
+            {
+                balance -= Convert.ToDouble(amountTextbox.Text);
+                balance = Math.Round(balance, 2);
+                balanceLabel.Content = balance + "€";
+            }
+            
+        }
+
+        public void getIncomePerDay()
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime lastDay = new DateTime(currentDate.Year, currentDate.Month, DateTime.DaysInMonth(currentDate.Year, currentDate.Month));
+
+            int daysLeft = (lastDay - currentDate).Days;
+            double incomePerDay = balance / daysLeft;
+            incomePerDay = Math.Round(incomePerDay, 2);
+
+            if (incomePerDay > 0)
+            {
+                incomePerDayLabel.Background = Brushes.Green;
+                incomePerDayLabel.Content = incomePerDay.ToString() + "€";
+            }
+            else if (incomePerDay < 0)
+            {
+                incomePerDayLabel.Background = Brushes.Red;
+            }
+            
+
         }
     }
 }

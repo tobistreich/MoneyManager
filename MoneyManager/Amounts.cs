@@ -21,7 +21,6 @@ namespace MoneyManager
         {
             amountStackpanel = stackPanel;
             amountTextbox = textBox;
-
         }
 
         public void addAmount(bool isIncome)
