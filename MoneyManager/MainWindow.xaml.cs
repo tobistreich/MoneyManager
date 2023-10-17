@@ -13,8 +13,9 @@ using System.Linq;
 
 namespace MoneyManager
 {
-    public class ExpenseRecord
+    public class Entries
     {
+        public int ID { get; set; }
         public string Category { get; set; }
         public string Name { get; set; }
         public string Amount { get; set; }
@@ -24,8 +25,9 @@ namespace MoneyManager
     public partial class MainWindow : Window
     {
         public bool isIncome;
+        public int iD;
         public double balance = 0.0;
-        private List<ExpenseRecord> records = new List<ExpenseRecord>();
+        private List<Entries> records = new List<Entries>();
 
         public MainWindow()
         {
@@ -60,10 +62,10 @@ namespace MoneyManager
             }
             else
             {
-                categoryClass.addCategory(isIncome);
-                nameClass.addName(isIncome);
-                amountClass.addAmount(isIncome);
-                datesClass.addDate(isIncome);
+                categoryClass.AddCategory(isIncome);
+                nameClass.AddName(isIncome);
+                amountClass.AddAmount(isIncome);
+                datesClass.AddDate(isIncome);
 
                 WriteToCSV();
                 SetNull();
@@ -81,8 +83,9 @@ namespace MoneyManager
         
         public void WriteToCSV()
         {
-            var record = new ExpenseRecord
+            var record = new Entries
             {
+                ID = iD,
                 Category = categoryCombobox.Text,
                 Name = nameTextbox.Text,
                 Amount = amountTextbox.Text,
@@ -105,7 +108,7 @@ namespace MoneyManager
             using (var reader = new StreamReader("data.csv"))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                records = csv.GetRecords<ExpenseRecord>().ToList();
+                records = csv.GetRecords<Entries>().ToList();
 
                 categoryStackpanel.Children.Clear();
                 nameStackpanel.Children.Clear();

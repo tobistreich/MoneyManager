@@ -22,7 +22,7 @@ namespace MoneyManager
             categoryCombobox = comboBox; 
         }
 
-        public void addCategory(bool isIncome)
+        public void AddCategory(bool isIncome)
         {
             if (categoryCombobox != null && categoryCombobox.SelectedItem != null)
             {

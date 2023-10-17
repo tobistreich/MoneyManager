@@ -23,7 +23,7 @@ namespace MoneyManager
             amountTextbox = textBox;
         }
 
-        public void addAmount(bool isIncome)
+        public void AddAmount(bool isIncome)
         {
             if (amountTextbox != null && !string.IsNullOrWhiteSpace(amountTextbox.Text))
             {

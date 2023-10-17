@@ -96,6 +96,7 @@
                     <StackPanel x:Name="nameStackpanel" Width="150"/>
                     <StackPanel x:Name="amountStackpanel" Width="120"/>
                     <StackPanel x:Name="dateStackpanel" Width="85"/>
+                    <StackPanel x:Name="editButtonStackpanel" Width="30"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

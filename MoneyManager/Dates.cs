@@ -22,7 +22,7 @@ namespace MoneyManager
             datesPicker = datePicker;
         }
 
-        public void addDate(bool isIncome)
+        public void AddDate(bool isIncome)
         {
             if (datesPicker != null && datesPicker.Text != null)
             {
