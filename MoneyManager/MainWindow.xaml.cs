@@ -69,6 +69,7 @@ namespace MoneyManager
                 WriteToCSV();
                 SetNull();
                 CheckBalanceColor();
+                getIncomePerDay();
             }
         }
         public void SetNull()
@@ -146,6 +147,7 @@ namespace MoneyManager
                     }
                     balance = Math.Round(balance, 2);
                     balanceLabel.Content = balance + "€";
+                    getIncomePerDay();
                 }
             }
         }
@@ -196,6 +198,28 @@ namespace MoneyManager
                 balanceLabel.Content = balance + "€";
             }
             
+        }
+
+        public void getIncomePerDay()
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime lastDay = new DateTime(currentDate.Year, currentDate.Month, DateTime.DaysInMonth(currentDate.Year, currentDate.Month));
+
+            int daysLeft = (lastDay - currentDate).Days;
+            double incomePerDay = balance / daysLeft;
+            incomePerDay = Math.Round(incomePerDay, 2);
+
+            if (incomePerDay > 0)
+            {
+                incomePerDayLabel.Background = Brushes.Green;
+                incomePerDayLabel.Content = incomePerDay.ToString() + "€";
+            }
+            else if (incomePerDay < 0)
+            {
+                incomePerDayLabel.Background = Brushes.Red;
+            }
+            
+
         }
     }
 }
