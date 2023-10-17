@@ -1,0 +1,6 @@
+Category,Name,Amount,IsIncome,Date
+Einkommen,Lohn,"2348,35",True,10/01/2023 00:00:00
+Abo/Vertrag,Netflix,"12,99",False,10/02/2023 00:00:00
+Lebensmittel,Einkäufe,62,False,10/04/2023 00:00:00
+Einkommen,Kindergeld,500,True,10/15/2023 00:00:00
+Shopping,Louis Vuitton Tasche,595,False,10/20/2023 00:00:00
