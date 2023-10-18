@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tobia\\OneDrive\\Desktop\\Projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj": {}
+    "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tobia\\OneDrive\\Desktop\\Projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj": {
+    "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tobia\\OneDrive\\Desktop\\Projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj",
+        "projectUniqueName": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj",
         "projectName": "MoneyManager",
-        "projectPath": "C:\\Users\\tobia\\OneDrive\\Desktop\\Projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj",
-        "packagesPath": "C:\\Users\\tobia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tobia\\OneDrive\\Desktop\\Projects\\MoneyManager\\MoneyManager\\obj\\",
+        "projectPath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\MoneyManager.csproj",
+        "packagesPath": "C:\\Users\\tobias.streich\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tobias.streich\\Desktop\\projects\\MoneyManager\\MoneyManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tobia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tobias.streich\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

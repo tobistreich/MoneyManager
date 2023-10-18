@@ -69,3 +69,5 @@ C:\Users\tobia\OneDrive\Desktop\Projects\MoneyManager\MoneyManager\obj\Debug\net
 C:\Users\tobia\OneDrive\Desktop\Projects\MoneyManager\MoneyManager\obj\Debug\net7.0-windows\ref\MoneyManager.dll
 C:\Users\tobia\OneDrive\Desktop\Projects\MoneyManager\MoneyManager\obj\Debug\net7.0-windows\Confirmation.g.cs
 C:\Users\tobia\OneDrive\Desktop\Projects\MoneyManager\MoneyManager\obj\Debug\net7.0-windows\Confirmation.baml
+C:\Users\tobias.streich\Desktop\projects\MoneyManager\MoneyManager\obj\Debug\net7.0-windows\Confirmation.g.cs
+C:\Users\tobias.streich\Desktop\projects\MoneyManager\MoneyManager\obj\Debug\net7.0-windows\Confirmation.baml
