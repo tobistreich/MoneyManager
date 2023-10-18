@@ -197,6 +197,7 @@ namespace MoneyManager
             else if (incomePerDay < 0)
             {
                 incomePerDayLabel.Background = Brushes.OrangeRed;
+                incomePerDayLabel.Content = incomePerDay.ToString() + "€";
             }
         }
         public void ResetAll()
@@ -233,6 +234,5 @@ namespace MoneyManager
             amountTextbox.Text = "";
             datesPicker.Text = null;
         }
-
     }
 }
